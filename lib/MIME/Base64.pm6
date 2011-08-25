@@ -8,7 +8,8 @@ class MIME::Base64:auth<cpan:SNARKY>:ver<1.0> {
             .local pmc encode
             encode = get_root_global ['parrot'; 'MIME'; 'Base64'], 'encode_base64'
             $P0 = find_lex '$str'
-            %r = encode($P0)
+            $S0 = repr_unbox_str $P0
+            %r = encode($S0)
         };
 
         return $encoded-str;
@@ -19,7 +20,8 @@ class MIME::Base64:auth<cpan:SNARKY>:ver<1.0> {
             .local pmc decode
             decode = get_root_global ['parrot'; 'MIME'; 'Base64'], 'decode_base64'
             $P0 = find_lex '$str'
-            %r = decode($P0)
+            $S0 = repr_unbox_str $P0
+            %r = decode($S0)
         };
 
         return $decoded-str;
