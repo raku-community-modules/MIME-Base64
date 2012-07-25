@@ -1,7 +1,7 @@
 class MIME::Base64:auth<cpan:SNARKY>:ver<1.1> {
 
     # load the MIME Base64 Parrot library to do all the hard work for us
-    pir::load_bytecode('MIME/Base64.pbc');
+    pir::load_bytecode__vs('MIME/Base64.pbc');
 
     method encode_base64(Str $str) {
         my $encoded-str = nqp::p6box_s Q:PIR {
