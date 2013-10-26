@@ -1,6 +1,9 @@
 use v6;
 
 use Test;
+
+use lib 'lib';
+
 use MIME::Base64;
 
 plan 9;
