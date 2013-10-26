@@ -3,6 +3,6 @@
     "version"     : "1.0",
     "description" : "Encoding and decoding Base64 ASCII strings",
     "depends"     : [],
-    "source-url"    : "git://github.com/moritz/Perl6-MIME-Base64.git",
+    "source-url"    : "git://github.com/perl6/Perl6-MIME-Base64.git",
     "source-type"   : "git"
 }
