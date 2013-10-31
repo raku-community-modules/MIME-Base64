@@ -6,7 +6,7 @@ pir::load_bytecode__vs('MIME/Base64.pbc');
 
 # a little hacky - apparently because the parrot library only runs on strings
 
-method encode(Blob $data --> Str) {
+method encode(Blob $data, :$oneline --> Str) {
     my $str = $data.decode('utf8');
 
     my $encoded-str = nqp::p6box_s Q:PIR {
@@ -16,6 +16,10 @@ method encode(Blob $data --> Str) {
         $S0 = repr_unbox_str $P0
         %r = encode($S0)
     };
+
+    if $oneline {
+        $encoded-str ~~ s:g/\n//;
+    }
 
     return $encoded-str;
 }

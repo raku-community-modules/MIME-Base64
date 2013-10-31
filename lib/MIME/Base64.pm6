@@ -43,11 +43,11 @@ class MIME::Base64:auth<cpan:SNARKY>:ver<1.1> {
         }
     }
 
-    method encode(Blob $data --> Str) {
+    method encode(Blob $data, :$oneline --> Str) {
         if self {
-            return self.backend.encode($data);
+            return self.backend.encode($data, :$oneline);
         } else {
-            return $default-backend.encode($data);
+            return $default-backend.encode($data, :$oneline);
         }
     }
 
@@ -59,8 +59,8 @@ class MIME::Base64:auth<cpan:SNARKY>:ver<1.1> {
         }
     }
 
-    method encode-str(Str $string --> Str) {
-        return self.encode($string.encode('utf8'));
+    method encode-str(Str $string, :$oneline --> Str) {
+        return self.encode($string.encode('utf8'), :$oneline);
     }
 
     method decode-str(Str $encoded --> Str) {

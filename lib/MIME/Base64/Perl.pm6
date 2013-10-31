@@ -9,29 +9,60 @@ for 0..63 -> $i {
     %decode-values{@encoding-chars[$i]} = $i;
 }
 
-method encode(Blob $data --> Str){
-    my $encoded = '';
+class EncodedData {
+    has @!chars;
+    has $!linelen = 0;
+    has $.maxlen = 76;
+    has $.newline = "\n";
+
+    method add-byte($b) {
+        self.add-char(@encoding-chars[$b]);
+    }
+
+    method add-char($x) {
+        @!chars.push($x);
+        $!linelen++;
+        if self.maxlen && $!linelen >= self.maxlen {
+            $!linelen = 0;
+            @!chars.push(self.newline);
+        }
+    }
+
+    method Str {
+        return @!chars.join;
+    }
+}
+
+method encode(Blob $data, :$oneline --> Str){
+    my $encoded = EncodedData.new;
+    if $oneline {
+        $encoded.maxlen = 0;
+    }
+    my $linelen = 0;
     for $data.list -> $byte1, $byte2?, $byte3? {
         # first 6 bits of 1
-        $encoded ~= @encoding-chars[($byte1 +& 0xFC) +> 2];
+        $encoded.add-byte(($byte1 +& 0xFC) +> 2);
         if $byte2 {
             # last 2 bits of 1, first 4 of 2
-            $encoded ~= @encoding-chars[(($byte1 +& 0x03) +< 4) +| (($byte2 +& 0xF0) +> 4)];
+            $encoded.add-byte((($byte1 +& 0x03) +< 4) +| (($byte2 +& 0xF0) +> 4));
             if $byte3 {
                 # last 4 bits of 2, first 2 of 3
-                $encoded ~= @encoding-chars[(($byte2 +& 0x0F) +< 2) +| (($byte3 +& 0xC0) +> 6)];
+                $encoded.add-byte((($byte2 +& 0x0F) +< 2) +| (($byte3 +& 0xC0) +> 6));
                 # last 6 bits of 3
-                $encoded ~= @encoding-chars[$byte3 +& 0x3F];
+                $encoded.add-byte($byte3 +& 0x3F);
             } else {
                 # last 4 bits of 2 (remaining 2 bits unset)
-                $encoded ~= @encoding-chars[($byte2 +& 0x0F) +< 2] ~ '=';
+                $encoded.add-byte(($byte2 +& 0x0F) +< 2);
+                $encoded.add-char('=');
             }
         } else {
             # last 2 bits of 1 (remaining 4 bits unset)
-            $encoded ~= @encoding-chars[($byte1 +& 0x03) +< 4] ~ '==';
+            $encoded.add-byte(($byte1 +& 0x03) +< 4);
+            $encoded.add-char('=');
+            $encoded.add-char('=');
         }
     }
-    return $encoded;
+    return ~$encoded;
 }
 
 method decode(Str $encoded --> Buf){
