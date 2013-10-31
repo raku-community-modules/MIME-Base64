@@ -16,9 +16,6 @@ STATUS
 Version 1.1 and later works on latest Rakudo based on nom. For earlier
 versions of Rakudo based on ng, please use v1.0 (see tag v1.0-ng).
 
-A pure Perl 6 version of MIME::Base64 will be included when pack/unpack is
-available in the Perl 6 core.
-
 LICENSE and COPYRIGHT
 
 Use these files at your risk and without warranty. This module may be used
