@@ -4,6 +4,11 @@ class MIME::Base64::Perl;
 # 6 bit encoding - 64 characters needed
 my @encoding-chars = 'A'..'Z','a'..'z','0'..'9','+','/';
 
+my %decode-values;
+for 0..63 -> $i {
+    %decode-values{@encoding-chars[$i]} = $i;
+}
+
 method encode(Blob $data --> Str){
     my $encoded = '';
     for $data.list -> $byte1, $byte2?, $byte3? {
@@ -30,5 +35,41 @@ method encode(Blob $data --> Str){
 }
 
 method decode(Str $encoded --> Buf){
-    die "perl version of MIME::Base64 NYI";
+    my @decoded;
+    
+    my $extra;
+    my $spaceleft = 8;
+    my $padcount = 0;
+    for $encoded.comb -> $char {
+        my $val = %decode-values{$char};
+        if $val ~~ Int {
+            if $spaceleft == 8 {
+                # grab the first 6 bits
+                $spaceleft = 2;
+                $extra = $val +< 2;
+            } elsif $spaceleft == 2 {
+                # grab the top two bits, complete a byte...
+                @decoded.push($extra +| (($val +& 0x30) +> 4));
+
+                # and start the next byte with the 4 remaining bits
+                $spaceleft = 4;
+                $extra = ($val +& 0x0F) +< 4;
+            } elsif $spaceleft == 4 {
+                # grab the top 4 bits, complete a byte...
+                @decoded.push($extra +| (($val +& 0x3C) +> 2));
+
+                # and start the next byte with the 2 remaining bits
+                $spaceleft = 6;
+                $extra = ($val +& 0x03) +< 6;
+            } elsif $spaceleft == 6 {
+                # complete a byte with a 6-bit char
+                @decoded.push($extra +| $val);
+                $spaceleft = 8;
+            }
+        }
+        if $char eq '=' {
+            $padcount++;
+        }
+    }
+    return Buf.new(@decoded);
 }
