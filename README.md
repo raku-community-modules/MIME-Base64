@@ -30,9 +30,14 @@ or
 
 ## Methods ##
 
-### `new($backend)`
+### `new($backend?)`
 
-Creates a new MIME::Base64 object that will use a specific backend.
+Creates a new MIME::Base64 object that will use a specific backend, or the
+current default backend if not specified.
+
+Note that all of the below methods can be called on MIME::Base64 directly. `.new`
+is only required if you want to encode using two different backends at the same
+time.
 
 ### `set-backend($backend)`
 
