@@ -7,12 +7,7 @@ MIME::Base64 - Encoding and decoding Base64 ASCII strings. A Perl6 implementatio
 
 ## Description ##
 
-A single module is available:
-
-### MIME::Base64
-
-Implements encoding and decoding to and from base64 using an underlying
-parrot library. This is a relatively fast implementation.
+Implements encoding and decoding to and from base64.
 
 ## Status ##
 
