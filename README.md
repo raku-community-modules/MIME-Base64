@@ -94,6 +94,14 @@ running rakudo on top of parrot.
 Pure Perl 6 implementation of base64 encoding. Selected by default when no other
 backends can be used.
 
+## Known Issues ##
+
+Precompilation on parrot currently breaks this module - conditional require's or
+use's seem to break module loading. If you are running the parrot backend
+exclusively and need this module to be precompiled (like Rakudo Star, for example),
+please use branch precompile-fix for now. Otherwise, you can use branch
+precompile-fix-pponly.
+
 ## LICENSE and COPYRIGHT ##
 
 Use these files at your risk and without warranty. This module may be used
