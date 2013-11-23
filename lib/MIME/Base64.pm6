@@ -4,14 +4,9 @@ class MIME::Base64:auth<cpan:SNARKY>:ver<1.1> {
     my $default-backend;
     has $.backend;
 
-    use MIME::Base64::PIR;
     use MIME::Base64::Perl;
 
-    if $*VM<name> eq 'parrot' {
-        $default-backend = MIME::Base64::PIR;
-    } else {
-        $default-backend = MIME::Base64::Perl;
-    }
+    $default-backend = MIME::Base64::Perl;
 
     method new($backend = 0) {
         if $backend ~~ Numeric {
