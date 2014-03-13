@@ -96,11 +96,8 @@ backends can be used.
 
 ## Known Issues ##
 
-Precompilation on parrot currently breaks this module - conditional require's or
-use's seem to break module loading. If you are running the parrot backend
-exclusively and need this module to be precompiled (like Rakudo Star, for example),
-please use branch precompile-fix for now. Otherwise, you can use branch
-precompile-fix-pponly.
+The previous precompilation issue has been fixed. The master branch should now be
+usable for all backends.
 
 ## LICENSE and COPYRIGHT ##
 
