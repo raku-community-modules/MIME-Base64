@@ -1,25 +1,11 @@
 use v6;
 
-#`[
-This is an ugly hack to make sure the dependencies are precompiled first
 use MIME::Base64::PIR;
 use MIME::Base64::Perl;
-(some of our tools do a text-based search for 'use' lines,
-and don't know about multi-line comments)
-]
 
 class MIME::Base64:auth<cpan:SNARKY>:ver<1.1> {
     my $default-backend;
     has $.backend;
-
-    BEGIN {
-        if $*VM<name> eq 'parrot' {
-            require MIME::Base64::PIR;
-            require MIME::Base64::Perl;
-        } else {
-            require MIME::Base64::Perl;
-        }
-    }
 
     if $*VM<name> eq 'parrot' {
         $default-backend = MIME::Base64::PIR;
