@@ -8,6 +8,9 @@ class Build is Panda::Builder {
             cp("$workdir/lib/MIME/Base64.pm6.parrot", "$workdir/lib/MIME/Base64.pm6");
         } else {
             cp("$workdir/lib/MIME/Base64.pm6.perl", "$workdir/lib/MIME/Base64.pm6");
+            rm_f("$workdir/lib/MIME/Base64/PIR.pm6");
         }
+        rm_f("$workdir/lib/MIME/Base64.pm6.parrot");
+        rm_f("$workdir/lib/MIME/Base64.pm6.perl");
     }
 }
