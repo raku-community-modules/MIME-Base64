@@ -42,10 +42,10 @@ method encode(Blob $data, :$oneline --> Str){
     for $data.list -> $byte1, $byte2?, $byte3? {
         # first 6 bits of 1
         $encoded.add-byte(($byte1 +& 0xFC) +> 2);
-        if $byte2 {
+        if $byte2.defined {
             # last 2 bits of 1, first 4 of 2
             $encoded.add-byte((($byte1 +& 0x03) +< 4) +| (($byte2 +& 0xF0) +> 4));
-            if $byte3 {
+            if $byte3.defined {
                 # last 4 bits of 2, first 2 of 3
                 $encoded.add-byte((($byte2 +& 0x0F) +< 2) +| (($byte3 +& 0xC0) +> 6));
                 # last 6 bits of 3
