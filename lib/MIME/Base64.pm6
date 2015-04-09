@@ -2,7 +2,7 @@ use v6;
 
 use MIME::Base64::Perl;
 
-class MIME::Base64:auth<cpan:SNARKY>:ver<1.2> is MIME::Base64::Perl {
+class MIME::Base64 is MIME::Base64::Perl {
     method encode-str(Str $string, :$oneline --> Str) {
         return self.encode($string.encode('utf8'), :$oneline);
     }
