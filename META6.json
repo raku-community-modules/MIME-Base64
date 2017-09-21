@@ -2,6 +2,7 @@
     "perl"        : "6.*",
     "name"        : "MIME::Base64",
     "version"     : "1.2",
+    "license"     : "Artistic-2.0",
     "author"      : "github:retupmoca",
     "description" : "Encoding and decoding Base64 ASCII strings",
     "depends"     : [],
