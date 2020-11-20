@@ -3,7 +3,7 @@ MIME::Base64
 
 ## Name ##
 
-MIME::Base64 - Encoding and decoding Base64 ASCII strings. A Perl6 implementation of MIME::Base64
+MIME::Base64 - Encoding and decoding Base64 ASCII strings. A Raku implementation of MIME::Base64
 
 ## Description ##
 
@@ -65,7 +65,7 @@ Calls `.decode-str($encoded)`
 
 ### `MIME::Base64::Perl`
 
-Pure Perl 6 implementation of base64 encoding.
+Pure Raku implementation of base64 encoding.
 
 ## Known Issues ##
 
