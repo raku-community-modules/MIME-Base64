@@ -10,6 +10,6 @@
         "MIME::Base64" : "lib/MIME/Base64.pm6",
         "MIME::Base64::Perl" : "lib/MIME/Base64/Perl.pm6"
     },
-    "source-url"    : "git://github.com/perl6/Perl6-MIME-Base64.git",
+    "source-url"    : "git://github.com/raku-community-modules/MIME-Base64.git",
     "source-type"   : "git"
 }
