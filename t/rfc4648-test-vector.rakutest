@@ -35,4 +35,4 @@ is $mime.encode-str('Aladdin:open sesame'),
 is $mime.decode-str('QWxhZGRpbjpvcGVuIHNlc2FtZQ=='), 'Aladdin:open sesame',
     'Decoding w3 http spec test open sesame';
 
-
+# vim: expandtab shiftwidth=4

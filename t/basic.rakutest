@@ -31,3 +31,5 @@ is $mime.decode_base64("QW5vdGhlciB0ZXN0IQ=="), 'Another test!', 'Decoding "Anot
 
 is $mime.encode_base64("username:thisisnotmypassword"), 'dXNlcm5hbWU6dGhpc2lzbm90bXlwYXNzd29yZA==', 'Encoding "username:thisisnotmypassword"';
 is $mime.decode_base64("dXNlcm5hbWU6dGhpc2lzbm90bXlwYXNzd29yZA=="), 'username:thisisnotmypassword', 'Decoding "username:thisisnotmypassword"';
+
+# vim: expandtab shiftwidth=4

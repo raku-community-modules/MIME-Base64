@@ -47,3 +47,4 @@ is $mime.encode($fancy-utf16-chars-bytes), $long-enc,
 is $mime.decode($long-enc).decode('UTF-16'), $fancy-unicode-chars,
     'decode more than one line encoding of binary utf16 data';
 
+# vim: expandtab shiftwidth=4
