@@ -9,7 +9,7 @@ my constant @encoding-chars = <
 
 my constant %decode-values = (^64).map({ @encoding-chars[$_] => $_ }).Map;
 
-method encode(Blob:D $data, :$oneline --> Str:D){
+method encode(Blob:D $data, :$oneline, :$eol = "\n" --> Str:D){
     my str @chars;
     my int $linelen;
     my int $maxlen  = $oneline ?? 0x7fffffffffffffff !! 76;
@@ -23,7 +23,7 @@ method encode(Blob:D $data, :$oneline --> Str:D){
         $linelen++;
         if $linelen >= $maxlen {
             $linelen = 0;
-            @chars.push("\n");
+            @chars.push($eol);
         }
     }
 

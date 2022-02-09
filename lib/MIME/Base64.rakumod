@@ -1,8 +1,8 @@
 use MIME::Base64::Perl:auth<zef:raku-community-modules>;
 
 class MIME::Base64:auth<zef:raku-community-modules> is MIME::Base64::Perl {
-    method encode-str(Str:D $string, :$oneline --> Str:D) {
-        self.encode($string.encode('utf8'), :$oneline)
+    method encode-str(Str:D $string, :$oneline, :$eol = "\n" --> Str:D) {
+        self.encode($string.encode('utf8'), :$oneline, :$eol)
     }
 
     method decode-str(Str:D $encoded --> Str:D) {
@@ -31,7 +31,7 @@ MIME::Base64 - Encoding and decoding Base64 ASCII strings
 
 use MIME::Base64;
 
-my $encoded = MIME::Base64.encode-str("xyzzy‽");
+my $encoded = MIME::Base64.encode-str("xyzzy‽", :eol("\x0D\x0A"));
 my $decoded = MIME::Base64.decode-str($encoded);
 
 =end code
@@ -42,7 +42,7 @@ or
 
 use MIME::Base64;
 
-my $encoded     = MIME::Base64.encode($blob);
+my $encoded     = MIME::Base64.encode($blob, );
 my $decoded-buf = MIME::Base64.decode($encoded);
 
 =end code
@@ -53,20 +53,24 @@ Implements encoding and decoding to and from base64.
 
 =head1 METHODS
 
-=head2 encode(Blob $data, :$oneline --> Str:D)
+=head2 encode(Blob $data, :$oneline, :$eol = "\n" --> Str:D)
 
 Encodeѕ binary data C<$data> in base64 format.
 
 By default, the output is wrapped every 76 characters. If `:$oneline` is set,
-wrapping will be disabled.
+wrapping will be disabled.  Also optionally takes a C<:eol> named argument
+to indicate the type of line-ending to be used.  Defaults to C<"\n">.
 
 =head2 decode(Str:D $encoded --> Str:D)
 
 Decodes base64 encoded data into a binary buffer.
 
-=head2 encode-str(Str:D $string, :$oneline --> Str:D)`
+=head2 encode-str(Str:D $string, :$oneline, :$eol = "\n" --> Str:D)`
 
-Encodes C<$string> into base64, assuming utf8 encoding.
+Encodes C<$string> into base64, assuming utf8 encoding.  By default, the
+output is wrapped every 76 characters. If `:$oneline` is set, wrapping will
+be disabled.  Also optionally takes a C<:eol> named argument to indicate
+the type of line-ending to be used.  Defaults to C<"\n">.
 
 =head2 decode-str(Str:D $encoded --> Str:D)`
 

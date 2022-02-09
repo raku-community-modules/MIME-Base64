@@ -11,7 +11,7 @@ SYNOPSIS
 ```raku
 use MIME::Base64;
 
-my $encoded = MIME::Base64.encode-str("xyzzy‽");
+my $encoded = MIME::Base64.encode-str("xyzzy‽", :eol("\x0D\x0A"));
 my $decoded = MIME::Base64.decode-str($encoded);
 ```
 
@@ -20,7 +20,7 @@ or
 ```raku
 use MIME::Base64;
 
-my $encoded     = MIME::Base64.encode($blob);
+my $encoded     = MIME::Base64.encode($blob, );
 my $decoded-buf = MIME::Base64.decode($encoded);
 ```
 
@@ -32,22 +32,22 @@ Implements encoding and decoding to and from base64.
 METHODS
 =======
 
-encode(Blob $data, :$oneline --> Str:D)
----------------------------------------
+encode(Blob $data, :$oneline, :$eol = "\n" --> Str:D)
+-----------------------------------------------------
 
 Encodeѕ binary data `$data` in base64 format.
 
-By default, the output is wrapped every 76 characters. If `:$oneline` is set, wrapping will be disabled.
+By default, the output is wrapped every 76 characters. If `:$oneline` is set, wrapping will be disabled. Also optionally takes a `:eol` named argument to indicate the type of line-ending to be used. Defaults to `"\n"`.
 
 decode(Str:D $encoded --> Str:D)
 --------------------------------
 
 Decodes base64 encoded data into a binary buffer.
 
-encode-str(Str:D $string, :$oneline --> Str:D)`
------------------------------------------------
+encode-str(Str:D $string, :$oneline, :$eol = "\n" --> Str:D)`
+-------------------------------------------------------------
 
-Encodes `$string` into base64, assuming utf8 encoding.
+Encodes `$string` into base64, assuming utf8 encoding. By default, the output is wrapped every 76 characters. If `:$oneline` is set, wrapping will be disabled. Also optionally takes a `:eol` named argument to indicate the type of line-ending to be used. Defaults to `"\n"`.
 
 decode-str(Str:D $encoded --> Str:D)`
 -------------------------------------
