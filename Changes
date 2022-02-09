@@ -1,4 +1,6 @@
 Revision history for MIME-Base64
 
 {{$NEXT}}
+
+1.2.2  2022-02-09T15:54:44+01:00
     - Initial version on the zef ecosystem using App::Mi6

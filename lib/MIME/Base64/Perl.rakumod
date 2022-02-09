@@ -11,14 +11,14 @@ my constant %decode-values = (^64).map({ @encoding-chars[$_] => $_ }).Map;
 
 method encode(Blob:D $data, :$oneline --> Str:D){
     my str @chars;
-    my uint $linelen;
-    my uint $maxlen  = $oneline ?? 0x7fffffffffffffff !! 76;
+    my int $linelen;
+    my int $maxlen  = $oneline ?? 0x7fffffffffffffff !! 76;
 
-    sub add-byte(uint $b --> Nil) {
+    my sub add-byte($b) {
         add-char(@encoding-chars[$b]);
     }
 
-    sub add-char(str $x --> Nil) {
+    my sub add-char(str $x) {
         @chars.push($x);
         $linelen++;
         if $linelen >= $maxlen {

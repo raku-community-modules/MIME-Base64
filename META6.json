@@ -15,7 +15,11 @@
   "resources": [
   ],
   "source-url": "git://github.com/raku-community-modules/MIME-Base64.git",
-  "tags": [ "MIME", "BASE64", "ENCODING", "DECODING"
+  "tags": [
+    "MIME",
+    "BASE64",
+    "ENCODING",
+    "DECODING"
   ],
   "test-depends": [
   ],
