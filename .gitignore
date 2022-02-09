@@ -1,1 +1,2 @@
-*.pir
+.precomp/
+/MIME-Base64-*

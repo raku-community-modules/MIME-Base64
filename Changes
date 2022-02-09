@@ -1,0 +1,4 @@
+Revision history for MIME-Base64
+
+{{$NEXT}}
+    - Initial version on the zef ecosystem using App::Mi6

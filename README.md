@@ -1,80 +1,81 @@
-MIME::Base64
-============
+[![Actions Status](https://github.com/raku-community-modules/MIME-Base64/workflows/test/badge.svg)](https://github.com/raku-community-modules/MIME-Base64/actions)
 
-## Name ##
+NAME
+====
 
-MIME::Base64 - Encoding and decoding Base64 ASCII strings. A Raku implementation of MIME::Base64
+MIME::Base64 - Encoding and decoding Base64 ASCII strings
 
-## Description ##
+SYNOPSIS
+========
 
-Implements encoding and decoding to and from base64.
+```raku
+use MIME::Base64;
 
-## Status ##
-
-Version 1.1 and later works on latest Rakudo based on nom. For earlier
-versions of Rakudo based on ng, please use v1.0 (see tag v1.0-ng).
-
-## Example Usage ##
-
-    use MIME::Base64;
-
-    my $encoded = MIME::Base64.encode-str("xyzzy‽");
-    my $decoded = MIME::Base64.decode-str($encoded);
+my $encoded = MIME::Base64.encode-str("xyzzy‽");
+my $decoded = MIME::Base64.decode-str($encoded);
+```
 
 or
 
-    use MIME::Base64;
+```raku
+use MIME::Base64;
 
-    my $encoded     = MIME::Base64.encode($blob);
-    my $decoded-buf = MIME::Base64.decode($encoded);
+my $encoded     = MIME::Base64.encode($blob);
+my $decoded-buf = MIME::Base64.decode($encoded);
+```
 
-## Methods ##
+DESCRIPTION
+===========
 
-### `encode(Blob $data, :$oneline --> Str)`
+Implements encoding and decoding to and from base64.
+
+METHODS
+=======
+
+encode(Blob $data, :$oneline --> Str:D)
+---------------------------------------
 
 Encodeѕ binary data `$data` in base64 format.
 
-By default, the output is wrapped every 76 characters. If `:$oneline` is set,
-wrapping will be disabled.
+By default, the output is wrapped every 76 characters. If `:$oneline` is set, wrapping will be disabled.
 
-### `decode(Str $encoded --> Buf)`
+decode(Str:D $encoded --> Str:D)
+--------------------------------
 
 Decodes base64 encoded data into a binary buffer.
 
-### `encode-str(Str $string, :$oneline --> Str)`
+encode-str(Str:D $string, :$oneline --> Str:D)`
+-----------------------------------------------
 
 Encodes `$string` into base64, assuming utf8 encoding.
 
-(Ιnternally calls `.encode($string.encode('utf8'))` )
-
-### `decode-str(Str $encoded --> Str)`
+decode-str(Str:D $encoded --> Str:D)`
+-------------------------------------
 
 Decodes `$encoded` into a string, assuming utf8 encoding.
 
-(Internally calls `.decode($encoded).decode('utf8')` )
+COMPATIBILITY METHODS
+=====================
 
-## Compatibility Methods ##
+encode_base64(Str:D $string --> Str:D)
+--------------------------------------
 
-### `encode_base64(Str $string --> Str)`
+Same as `.encode-str($string`.
 
-Calls `.encode-str($string)`
-
-### `decode_base64(Str $encoded --> Str)`
+decode_base64(Str:D $encoded --> Str:D)
+---------------------------------------
 
 Calls `.decode-str($encoded)`
 
-### `MIME::Base64::Perl`
+AUTHOR
+======
 
-Pure Raku implementation of base64 encoding.
+Originally written by Adrian White. Maintained by many other people over the years. Now being maintained as a Raku community module.
 
-## Known Issues ##
+COPYRIGHT AND LICENSE
+=====================
 
-The previous precompilation issue has been fixed. The master branch should now be
-usable for all backends.
+Copyright 2010 - 2011 Adrian White Copyright 2012 - 2022 Raku Community
 
-## LICENSE and COPYRIGHT ##
+This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
 
-Use these files at your risk and without warranty. This module may be used
-under the terms of the Artistic License 2.0.
-
-Written by Adrian White.
