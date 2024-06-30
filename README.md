@@ -1,4 +1,4 @@
-[![Actions Status](https://github.com/raku-community-modules/MIME-Base64/workflows/test/badge.svg)](https://github.com/raku-community-modules/MIME-Base64/actions)
+[![Actions Status](https://github.com/raku/raku-community-modules/MIME-Base64/actions/workflows/linux.yml/badge.svg)](https://github.com/raku/raku-community-modules/MIME-Base64/actions) [![Actions Status](https://github.com/raku/raku-community-modules/MIME-Base64/actions/workflows/macos.yml/badge.svg)](https://github.com/raku/raku-community-modules/MIME-Base64/actions) [![Actions Status](https://github.com/raku/raku-community-modules/MIME-Base64/actions/workflows/windows.yml/badge.svg)](https://github.com/raku/raku-community-modules/MIME-Base64/actions)
 
 NAME
 ====

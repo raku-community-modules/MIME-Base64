@@ -14,7 +14,7 @@
   },
   "resources": [
   ],
-  "source-url": "git://github.com/raku-community-modules/MIME-Base64.git",
+  "source-url": "https://github.com/raku/raku-community-modules/MIME-Base64.git",
   "tags": [
     "MIME",
     "BASE64",
