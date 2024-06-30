@@ -1,6 +1,7 @@
 Revision history for MIME-Base64
 
 {{$NEXT}}
+    - Add 3-OS separate tests and badges
 
 1.2.3  2022-02-09T18:34:18+01:00
     - Add support for :eol to "encode-str" and "encode", as discussed in
