@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-name: Win64
-=======
 name: Windows
->>>>>>> 145435d (CI test prior to release)
 
 on:
   push:
