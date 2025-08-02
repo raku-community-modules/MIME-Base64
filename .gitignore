@@ -1,2 +1,3 @@
 .precomp/
 /MIME-Base64-*
+*.rakucov
