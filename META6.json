@@ -1,6 +1,8 @@
 {
   "auth": "zef:raku-community-modules",
-  "authors": [ "Adrian White" ],
+  "authors": [
+    "Adrian White"
+  ],
   "build-depends": [
   ],
   "depends": [
@@ -9,13 +11,14 @@
   "license": "Artistic-2.0",
   "name": "MIME::Base64",
   "perl": "6.d",
-  "raku": "6.d",
   "production": true,
   "provides": {
     "MIME::Base64": "lib/MIME/Base64.rakumod"
   },
+  "raku": "6.d",
   "resources": [
   ],
+  "source-url": "https://github.com/raku-community-modules/MIME-Base64.git",
   "support": {
     "bugtracker": "https://github.com/raku-community-modules/MIME-Base64/issues",
     "email": "community@raku.org",
@@ -29,5 +32,5 @@
   ],
   "test-depends": [
   ],
-  "version": "1.2.3"
+  "version": "1.2.4"
 }

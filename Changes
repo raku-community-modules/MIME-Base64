@@ -1,6 +1,8 @@
 Revision history for MIME-Base64
 
 {{$NEXT}}
+
+1.2.4  2025-08-02T11:56:39+02:00
     - Move documentation to separate file
     - Update copyright year
     - Integrate submodule into main module: no need to exist

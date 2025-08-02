@@ -1,4 +1,4 @@
-unit class MIME::Base64:ver<1.2.3>:auth<zef:raku-community-modules>;
+unit class MIME::Base64:ver<1.2.4>:auth<zef:raku-community-modules>;
 
 # 6 bit encoding - 64 characters needed
 my constant @encoding-chars = <
