@@ -22,7 +22,7 @@
   "support": {
     "bugtracker": "https://github.com/raku-community-modules/MIME-Base64/issues",
     "email": "community@raku.org",
-    "source-url": "git://github.com/raku-community-modules/MIME-Base64.git"
+    "source": "git://github.com/raku-community-modules/MIME-Base64.git"
   },
   "tags": [
     "MIME",
